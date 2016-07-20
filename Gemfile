@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
+gem 'haml-rails', '~> 0.9.0'
 
 
 group :development, :test do
