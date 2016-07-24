@@ -14,13 +14,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+
+    @tags = @post.tags.pluck(:name).join(',')
   end
 
   def create
     @post = Post.new(post_params)
 
     if @post.save
-      tags_array = params[:name].split(' ')
+      tags_array = params[:name].split(',')
 
       tags_array.each do |tag_string|
         tag = Tag.find_or_create_by(name: tag_string)
