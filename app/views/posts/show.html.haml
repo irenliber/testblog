@@ -1,6 +1,9 @@
 %h1= @post.title
 %p= @post.content
 
+- @post.tags.each do |tag|
+  = tag.name
+
 = link_to "Edit", edit_post_path, class: 'btn btn-default'
 = link_to "Delete", post_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-default'
 = link_to "All posts", posts_path, class: 'btn btn-default'
