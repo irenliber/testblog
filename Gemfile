@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
 gem 'haml-rails', '~> 0.9.0'
+gem 'tagsinput-rails'
 
 
 group :development, :test do
