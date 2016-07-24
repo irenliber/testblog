@@ -19,14 +19,17 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was created.' }
-        format.json {render :show, status: created, location: @post }
-      else
-        format.html { render :new }
-        format.json {render json: @post.errors, status: :unprocessable_entity }
+    if @post.save
+      tags_array = params[:name].split(' ')
+
+      tags_array.each do |tag_string|
+        tag = Tag.find_or_create_by(name: tag_string)
+        @post.tags << tag
       end
+
+      redirect_to @post
+    else
+        render 'new'
     end
   end
 
@@ -46,7 +49,6 @@ class PostsController < ApplicationController
 
     redirect_to posts_path
   end
-
 
   private
 
