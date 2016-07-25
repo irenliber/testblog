@@ -6,7 +6,8 @@
         %h1= link_to post.title, post
         %p1= post.content
         %br
-        %p2= post.tags.pluck(:name).join(' ')
+        - post.tags.each do |tag|
+          .link-tag= tag.name
 
 
       = link_to "New", new_post_path, class: 'btn btn-default'
