@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    if params[:tag_link].present?
+      @posts = Tag.find_by(name: params[:tag_link]).posts
+    else
+      @posts = Post.all.order('created_at DESC')
+    end
+
   end
 
   def show

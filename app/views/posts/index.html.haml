@@ -7,7 +7,8 @@
         %p1= post.content
         %br
         - post.tags.each do |tag|
-          .link-tag= tag.name
+          = link_to tag.name, posts_path(tag_link: tag.name), class: "link-tag"
 
 
       = link_to "New", new_post_path, class: 'btn btn-default'
+
