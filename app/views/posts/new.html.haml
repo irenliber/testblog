@@ -7,10 +7,10 @@
     = f.label :text
     = f.text_area :content, class: 'form-control', :rows=> "6"
   .form-group
-    = text_field_tag :name, '', class: 'form-control'
+    = text_field_tag :name, '', id: "tags"
+
   %br
     = f.submit class: 'btn btn-primary'
     = link_to "Cancel", posts_path, class: 'btn btn-primary'
 
 
-%input{name: "tags", id: "tags", value:"foo,bar,baz"}
