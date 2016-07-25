@@ -9,4 +9,25 @@
     = javascript_include_tag params[:controller]
     = stylesheet_link_tag params[:controller]
   %body
-    = yield
+    %nav.navbar.navbar-default{:role => "navigation"}
+      .container
+        .row
+          .site-navigation-inner.col-sm-12
+            .navbar-header
+              %button.btn.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+                %span.sr-only Toggle navigation
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              .navbar-brand
+                %a BLOG
+            .collapse.navbar-collapse.navbar-ex1-collapse
+              %ul.nav.navbar-nav
+                %li
+                  = link_to 'All posts', root_path
+                %li
+                  = link_to 'New post', new_post_path
+
+    .container
+
+      = yield

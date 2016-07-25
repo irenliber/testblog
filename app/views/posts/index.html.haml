@@ -1,5 +1,12 @@
-- @posts.each do |post|
-  %h2= link_to post.title, post
-  = post.content
+.container
+  .content.col-sm-12.col-md-10.pull-left
+    .posts-card
+      .row
+      - @posts.each do |post|
+        %h1= link_to post.title, post
+        %p1= post.content
+        %br
+        %p2= post.tags.pluck(:name).join(' ')
 
-= link_to "New", new_post_path, class: 'btn btn-default'
+
+      = link_to "New", new_post_path, class: 'btn btn-default'
