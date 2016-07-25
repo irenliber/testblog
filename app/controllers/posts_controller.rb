@@ -44,6 +44,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(params[:post].permit(:title, :content))
+
+      params[:tags].split(',').each do |tag_string|
+        tag = Tag.find_or_create_by(name: tag_string)
+        @post.tags << tag
+      end
+
       redirect_to @post
     else
       render 'edit'
