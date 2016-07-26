@@ -50,6 +50,17 @@ class PostsController < ApplicationController
         @post.tags << tag
       end
 
+      tag_list = @post.tags.map{|x| x[:name]}
+      update_tags = params[:tags].split(',')
+
+      delete_list = tag_list - update_tags
+
+      delete_list.each do |tag_name|
+        @post.tags.delete( Tag.find_by(name: tag_name) )
+
+        # new_tags = tag_list.delete_at(tag_list.index(del))
+      end
+
       redirect_to @post
     else
       render 'edit'
