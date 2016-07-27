@@ -1,14 +1,12 @@
-.container
-  .content.col-sm-12.col-md-10.pull-left
-    .posts-card
-      .row
-      - @posts.each do |post|
-        %h1= link_to post.title, post
-        %p1= post.content
-        %br
-        - post.tags.each do |tag|
-          = link_to tag.name, posts_path(tag_link: tag.name), class: "link-tag"
 
-
-      = link_to "New", new_post_path, class: 'btn btn-default'
+.posts-card
+  - @posts.each do |post|
+    %h1= link_to post.title, post
+    %p1= post.content
+    %br
+    - post.tags.each do |tag|
+      = link_to tag.name, posts_path(tag_link: tag.name), class: "link-tag"
+  %br
+  = link_to "New post", new_post_path, class: 'btn btn-default'
+  = link_to "All posts", posts_path, class: 'btn btn-default'
 
