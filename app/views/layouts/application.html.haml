@@ -12,7 +12,7 @@
     %nav.navbar.navbar-default{:role => "navigation"}
       .container
         .row
-          .site-navigation-inner.col-sm-12
+          .site-navigation-inner.col-sm-8
             .navbar-header
               %button.btn.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
                 %span.sr-only Toggle navigation
@@ -20,7 +20,7 @@
                 %span.icon-bar
                 %span.icon-bar
               .navbar-brand
-                %a BLOG
+                %span MYBLOG
             .collapse.navbar-collapse.navbar-ex1-collapse
               %ul.nav.navbar-nav
                 %li
@@ -29,5 +29,40 @@
                   = link_to 'New post', new_post_path
 
     .container
+      .row
+        .content.col-sm-8
+          = yield
 
-      = yield
+        .inf.col-sm-4
+          #modal_form
+            %span#modal_close X
+            HELLO!
+            %br It's jQuery
+          #overlay
+
+          %button.btn.btn-default.btn-lg.btn-block{"data-target" => ".bs-example-modal-lg", "data-toggle" => "modal", :type => "button"} Subscribe
+          .modal.fade.bs-example-modal-lg{"aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+            .modal-dialog.modal-lg{:role => "document"}
+              .modal-content
+                .modal-header
+                  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                    %span{"aria-hidden" => "true"} ×
+                  %h2.modal-title Subscribe for latast updates
+                .modal-body
+                  %p Subscribe to our mailing list to get the updates to your e-mail inbox
+                  %form
+                    .form-group
+                      %label{:for => "exampleInputName2"} Name
+                      %input#exampleInputName2.form-control{:placeholder => "Your name", :type => "text"}/
+                    .form-group
+                      %label{:for => "exampleInputEmail1"} Email address
+                      %input#exampleInputEmail1.form-control{:placeholder => "Email", :type => "email"}/
+                .modal-footer
+                  %button.btn.btn-primary{:type => "button"} Subscribe
+
+          #hello.btn.btn-default.btn-lg.btn-block{:type => "button"} HELLO
+
+
+
+
+
